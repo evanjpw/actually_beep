@@ -5,8 +5,8 @@ _A library to **actually** beep._
 [![crates.io](https://img.shields.io/crates/v/actually_beep.svg)](https://crates.io/crates/actually_beep)
 [![docs.rs](https://docs.rs/actually_beep/badge.svg)](https://docs.rs/actually_beep)
 ![MSRV](https://img.shields.io/crates/msrv/actually_beep)
-[![License](https://img.shields.io/crates/l/actually_beep.svg)](https://opensource.org/licenses/Apache-2.0)
-<!-- (https://img.shields.io/badge/License-Apache%202.0-blue.svg) -->
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+<!-- (https://img.shields.io/crates/l/actually_beep.svg) -->
 
 ## Overview
 
