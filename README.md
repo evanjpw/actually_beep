@@ -43,7 +43,9 @@ fn main() {
 
 ## Motivation
 
-I was writing one of my [1970s]() [retro-game]() [re-writes](), & I needed to be able to
+I was writing one of my [1970s](https://github.com/evanjpw/startrust)
+[retro-game](https://github.com/evanjpw/wump)
+[re-writes](https://github.com/evanjpw/retro-robots), & I needed to be able to
 generate a beep (for period *verisimilitude*). I had needed this before, & I found the
 [beep crate](https://crates.io/crates/beep), which I used, but had to stop using
 because it wasn't cross-platform.
