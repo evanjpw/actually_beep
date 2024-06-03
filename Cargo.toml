@@ -1,0 +1,24 @@
+[package]
+name = "actually_beep"
+description = "A cross platform library to provides easy to use beep functions that actually beep"
+version = "0.1.0"
+edition = "2021"
+authors = ["Evan Williams <evanjpw@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/evanjpw/actually_beep"
+license = "Apache-2.0"
+keywords = ["audio", "beep", "sound"]
+categories = ["multimedia::audio", "multimedia"]
+rust-version = "1.70.0"
+exclude = ["./nah", "./.idea"]
+
+[features]
+jack = ["cpal/jack"] # Use the "jack" feature of `cpal`. Only useful on Linux & the BSDs.
+threaded = [] # Doesn't currently do anything.
+
+[dependencies]
+cpal = "0.15.3"
+thiserror = "1.0.61"
+
+[[example]]
+name = "just_beep"
