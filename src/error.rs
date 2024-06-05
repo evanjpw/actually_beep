@@ -1,6 +1,5 @@
-use cpal::SampleFormat;
+use cpal::{SampleFormat, HostId};
 use thiserror::Error;
-
 /// The `actually_beep` Error type
 #[derive(Debug, Error)]
 pub enum Error {
@@ -12,7 +11,8 @@ pub enum Error {
     StreamError(cpal::StreamError),
     #[error("Failed to find output device \"{0}\"")]
     NoDevice(String),
+    #[error("Host not found: {0:?}")]
+    HostNotFound(HostId)
 }
-
 /// The `actually_beep` Result type
 pub type Result<S> = std::result::Result<S, Error>;

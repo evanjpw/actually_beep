@@ -1,4 +1,4 @@
-use cpal::{traits::{DeviceTrait, HostTrait, StreamTrait}, FromSample, Sample, SizedSample, Device};
+use cpal::{traits::{DeviceTrait, HostTrait, StreamTrait}, FromSample, Sample, SizedSample, Device, Host, HostId, host_from_id, available_hosts};
 use crate::{Error, Result};
 
 struct Tone {
@@ -29,8 +29,31 @@ pub fn beep_with_hz_and_millis(hertz: u32, millis: u32) -> Result<()> {
     play(None, &tone)?;
     Ok(())}
 
+fn get_host(host_id: Option<HostId>) -> Result<Host> {
+    #[cfg(all(
+        any(
+            target_os = "linux",
+            target_os = "dragonfly",
+            target_os = "freebsd",
+            target_os = "netbsd"
+        ),
+        feature = "jack"
+    ))]
+    let host_id = host_id.or(Some(HostId::Jack));
+
+    if let Some(host_id) = host_id {
+        host_from_id(
+            available_hosts().into_iter().find(|id| *id == host_id).ok_or_else(
+                || Error::HostNotFound(host_id)
+            )?
+        ).map_err(|e| Error::CpalError(Box::new(e)))
+    } else {
+        Ok(cpal::default_host())
+    }
+}
+
 fn play(device_name: Option<&str>, tone: &Tone) -> Result<()> {
-    let host = cpal::default_host();
+    let host = get_host(None)?;
     let device_name = device_name.unwrap_or("default");
     let device =if device_name == "default" {
         host.default_output_device()

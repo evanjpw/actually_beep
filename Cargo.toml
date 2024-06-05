@@ -1,7 +1,7 @@
 [package]
 name = "actually_beep"
 description = "A cross platform library to provides easy to use beep functions that actually beep"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Evan Williams <evanjpw@gmail.com>"]
 readme = "README.md"
